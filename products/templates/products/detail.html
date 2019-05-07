@@ -1,25 +1,17 @@
-
-
-
-
-
 {% extends "accounts/accounts.html" %}
 {% block products %}
 
-
-{% for product in products.all %}
-
-<div class="myform form col-md-8 mx-auto" style="max-width: unset ; max-height: max-content">
+<br />
+<br>
+<div class="myform form col-md-8 mx-auto" style="max-width: max-content">
     <div class="row">
-        <div class="col-md-2" >
+        <div class="col-md-2">
             <img src="{{ product.icon.url }}" class="img-fluid" />
         </div>
         <div class="col-md-9">
-            <a href="{% url 'detail' product.id %}">
-                <h5>{{product.title}}</h5>
+            <a href="{{product.url}}">
+                <h3>{{product.title}}</h3>
             </a>
-            <small class="row justify-content-center">{{ product.hunter.username }} </small>
-            <small class="row justify-content-center">{{product.pub_date}}</small>
         </div>
         <div class="col-md-1">
             <a href=" javascript:{document.getElementById('upvote').submit()}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">
@@ -28,13 +20,21 @@
         </div>
     </div>
 
+    <h5 class="row justify-content-center">Created by {{ product.hunter.username }} </h5>
+    <label class="row justify-content-center">on {{product.pub_date}}</label>
+    <br>
+    <p>{{product.body}}</p>
+    <br />
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <img src="{{ product.image.url }}" class="img-fluid" />
+        </div>
+    </div>
 </div>
-
-
 
 <form id='upvote' action="{% url 'upvote' product.id %}"  method="POST">
     {% csrf_token %}
     <input type="hidden">
 </form>
-{% endfor %}
+
 {% endblock products %}
