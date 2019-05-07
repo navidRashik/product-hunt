@@ -1,0 +1,53 @@
+{% extends "accounts/accounts.html" %}
+{% block accounts %}
+
+{% if error %}
+<div class="alert alert-danger" role="alert">
+    {{error}}
+</div>
+<br>
+<br>
+{% endif %}
+<div class="myform form ">
+    <div class="logo mb-3">
+        <div class="col-md-12 text-center">
+            <h1>Create Product</h1>
+        </div>
+    </div>
+    <form action="{% url 'create_product'%}" enctype = "multipart/form-data" name="create_product" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleInputEmail1">Title Name</label>
+            <input type="text" name="title" class="form-control" id="firstname" aria-describedby="emailHelp"
+                placeholder="Enter Title">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Body</label>
+            <input type="textbox" name="body" class="form-control" id="lastname" aria-describedby="emailHelp"
+                placeholder="Enter detail">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1"> URL </label>
+            <input type="url" name="url" class="form-control" id="email" aria-describedby="emailHelp"
+                placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Icon</label>
+            <input type="file" name="icon" id="password" class="form-control" aria-describedby="emailHelp"
+                placeholder="Enter icon">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Image</label>
+            <input type="file" name="Image" id="password" class="form-control" aria-describedby="emailHelp"
+                placeholder="Enter Image">
+        </div>
+        <div class="col-md-12 text-center mb-3">
+            <button type="submit" class=" btn btn-block mybtn btn-dark tx-tfm">Add Product</button>
+        </div>
+
+</div>
+</form>
+</div>
+
+
+{% endblock accounts %}
