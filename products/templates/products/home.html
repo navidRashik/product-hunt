@@ -4,7 +4,7 @@
 
 
 {% extends "accounts/accounts.html" %}
-{% block products %}
+{% block products_block %}
 
 
 {% for product in products.all %}
@@ -37,4 +37,4 @@
     <input type="hidden">
 </form>
 {% endfor %}
-{% endblock products %}
+{% endblock products_block %}
